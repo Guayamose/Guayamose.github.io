@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+  <!--
+    Archivo: index.html
+    Descripción: Página principal del torneo universitario de League of Legends.
+                 Cada sección se muestra por separado (solo la “active” es visible).
+                 El bracket se muestra en forma de árbol en escritorio y en versión vertical en móvil.
+                 El menú es desplegable en móvil.
+  -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Torneo Universitario de League of Legends – Web interactiva con bracket profesional, patrocinadores, normas, equipos, avisos, inscripción y más."
+    />
+    <title>Torneo Universitario de League of Legends</title>
+    <link rel="stylesheet" href="src/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <div class="header-container">
+        <img src="src/media/logo.png" alt="Logo del torneo" class="logo" />
+        <h1 class="site-title">Torneo Universitario de League of Legends</h1>
+      </div>
+    </header>
+
+    <!-- NAVIGACIÓN -->
+    <nav>
+      <div class="nav-container">
+        <!-- Checkbox para menú móvil -->
+        <input type="checkbox" id="menu-toggle" />
+        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+        <ul class="nav-menu">
+          <li><a href="#" class="nav-link" data-target="bracket">Bracket</a></li>
+          <li><a href="#" class="nav-link" data-target="sponsors">Patrocinadores</a></li>
+          <li><a href="#" class="nav-link" data-target="rules">Normas</a></li>
+          <li><a href="#" class="nav-link" data-target="teams">Equipos</a></li>
+          <li><a href="#" class="nav-link" data-target="announcements">Avisos</a></li>
+          <li><a href="#" class="nav-link" data-target="signup">Inscripción</a></li>
+          <!-- Se quita la pestaña de Documentación -->
+          <li><a href="#" class="nav-link" data-target="premios">Premios</a></li>
+          <li><a href="#" class="nav-link" data-target="contact">Contacto</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENIDO -->
+    <main>
+      <!-- SECCIÓN: Bracket -->
+      <section id="bracket" class="section active">
+        <h2 class="section-title">Bracket del Torneo</h2>
+        <!-- Versión escritorio: bracket en árbol -->
+        <div class="bracket-desktop">
+          <!-- Ronda 1: 8 matches -->
+          <div class="round round-1">
+            <h3 class="round-title">Primera Ronda</h3>
+            <div class="matches">
+              <div class="match">
+                <div class="team">
+                  <img src="assets/teams/team1.png" alt="Team 1" class="team-logo" />
+                  <span class="team-name">Team 1</span>
+                  <span class="team-score">0</span>
+                </div>
+                <div class="team">
+                  <img src="assets/teams/team2.png" alt="Team 2" class="team-logo" />
+                  <span class="team-name">Team 2</span>
+                  <span class="team-score">0</span>
+                </div>
+              </div>
+              <div class="match">
+                <div class="team">
+                  <img src="assets/teams/team3.png" alt="Team 3" class="team-logo" />
+                  <span class="team-name">Team 3</span>
+                  <span class="team-score">0</span>
+                </div>
+                <div class="team">
+                  <img src="assets/teams/team4.png" alt="Team 4" class="team-logo" />
+                  <span class="team-name">Team 4</span>
+                  <span class="team-score">0</span>
+                </div>
+              </div>
+              <div class="match">
+                <div class="team">
+                  <img src="assets/teams/team5.png" alt="Team 5" class="team-logo" />
+                  <span class="team-name">Team 5</span>
+                  <span class="team-score">0</span>
+                </div>
+                <div class="team">
+                  <img src="assets/teams/team6.png" alt="Team 6" class="team-logo" />
+                  <span class="team-name">Team 6</span>
+                  <span class="team-score">0</span>
+                </div>
+              </div>
+              <div class="match">
+                <div class="team">
+                  <img src="assets/teams/team7.png" alt="Team 7" class="team-logo" />
+                  <span class="team-name">Team 7</span>
+                  <span class="team-score">0</span>
+                </div>
+                <div class="team">
+                  <img src="assets/teams/team8.png" alt="Team 8" class="team-logo" />
+                  <span class="team-name">Team 8</span>
+                  <span class="team-score">0</span>
+                </div>
+              </div>
+              <div class="match">
+                <div class="team">
+                  <img src="assets/teams/team9.png" alt="Team 9" class="team-logo" />
+                  <span class="team-name">Team 9</span>
+                  <span class="team-score">0</span>
+                </div>
+                <div class="team">
+                  <img src="assets/teams/team10.png" alt="Team 10" class="team-logo" />
+                  <span class="team-name">Team 10</span>
+                  <span class="team-score">0</span>
+                </div>
+              </div>
+              <div class="match">
+                <div class="team">
+                  <img src="assets/teams/team11.png" alt="Team 11" class="team-logo" />
+                  <span class="team-name">Team 11</span>
+                  <span class="team-score">0</span>
+                </div>
+                <div class="team">
+                  <img src="assets/teams/team12.png" alt="Team 12" class="team-logo" />
+                  <span class="team-name">Team 12</span>
+                  <span class="team-score">0</span>
+                </div>
+              </div>
+              <div class="match">
+                <div class="team">
+                  <img src="assets/teams/team13.png" alt="Team 13" class="team-logo" />
+                  <span class="team-name">Team 13</span>
+                  <span class="team-score">0</span>
+                </div>
+                <div class="team">
+                  <img src="assets/teams/team14.png" alt="Team 14" class="team-logo" />
+                  <span class="team-name">Team 14</span>
+                  <span class="team-score">0</span>
+                </div>
+              </div>
+              <div class="match">
+                <div class="team">
+                  <img src="assets/teams/team15.png" alt="Team 15" class="team-logo" />
+                  <span class="team-name">Team 15</span>
+                  <span class="team-score">0</span>
+                </div>
+                <div class="team">
+                  <img src="assets/teams/team16.png" alt="Team 16" class="team-logo" />
+                  <span class="team-name">Team 16</span>
+                  <span class="team-score">0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Ronda 2: 4 matches -->
+          <div class="round round-2">
+            <h3 class="round-title">Cuartos de Final</h3>
+            <div class="matches">
+              <div class="match">
+                <div class="team">
+                  <span class="team-name">Ganador 1</span>
+                  <span class="team-score">0</span>
+                </div>
+                <div class="team">
+                  <span class="team-name">Ganador 2</span>
+                  <span class="team-score">0</span>
+                </div>
+              </div>
+              <div class="match">
+                <div class="team">
+                  <span class="team-name">Ganador 3</span>
+                  <span class="team-score">0</span>
+                </div>
+                <div class="team">
+                  <span class="team-name">Ganador 4</span>
+                  <span class="team-score">0</span>
+                </div>
+              </div>
+              <div class="match">
+                <div class="team">
+                  <span class="team-name">Ganador 5</span>
+                  <span class="team-score">0</span>
+                </div>
+                <div class="team">
+                  <span class="team-name">Ganador 6</span>
+                  <span class="team-score">0</span>
+                </div>
+              </div>
+              <div class="match">
+                <div class="team">
+                  <span class="team-name">Ganador 7</span>
+                  <span class="team-score">0</span>
+                </div>
+                <div class="team">
+                  <span class="team-name">Ganador 8</span>
+                  <span class="team-score">0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Ronda 3: 2 matches -->
+          <div class="round round-3">
+            <h3 class="round-title">Semifinales</h3>
+            <div class="matches">
+              <div class="match">
+                <div class="team">
+                  <span class="team-name">Semi 1</span>
+                  <span class="team-score">0</span>
+                </div>
+                <div class="team">
+                  <span class="team-name">Semi 2</span>
+                  <span class="team-score">0</span>
+                </div>
+              </div>
+              <div class="match">
+                <div class="team">
+                  <span class="team-name">Semi 3</span>
+                  <span class="team-score">0</span>
+                </div>
+                <div class="team">
+                  <span class="team-name">Semi 4</span>
+                  <span class="team-score">0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Ronda 4: 1 match -->
+          <div class="round round-4">
+            <h3 class="round-title">Final</h3>
+            <div class="matches">
+              <div class="match">
+                <div class="team">
+                  <span class="team-name">Finalista A</span>
+                  <span class="team-score">0</span>
+                </div>
+                <div class="team">
+                  <span class="team-name">Finalista B</span>
+                  <span class="team-score">0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin bracket-desktop -->
+        <!-- Versión móvil: se mostrará en media queries -->
+      </section>
+
+      <!-- SECCIÓN: Patrocinadores -->
+      <section id="sponsors" class="section">
+        <h2 class="section-title">Patrocinadores</h2>
+        <div class="sponsors-container">
+          <div class="sponsor-item">
+            <img src="assets/sponsors/sponsor1.png" alt="Sponsor 1" />
+            <p>Sponsor Uno</p>
+          </div>
+          <div class="sponsor-item">
+            <img src="assets/sponsors/sponsor2.png" alt="Sponsor 2" />
+            <p>Sponsor Dos</p>
+          </div>
+          <div class="sponsor-item">
+            <img src="assets/sponsors/sponsor3.png" alt="Sponsor 3" />
+            <p>Sponsor Tres</p>
+          </div>
+          <div class="sponsor-item">
+            <img src="assets/sponsors/sponsor4.png" alt="Sponsor 4" />
+            <p>Sponsor Cuatro</p>
+          </div>
+          <div class="sponsor-item">
+            <img src="assets/sponsors/sponsor5.png" alt="Sponsor 5" />
+            <p>Sponsor Cinco</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN: Normas -->
+      <section id="rules" class="section">
+        <h2 class="section-title">Normas del Torneo</h2>
+        <div class="rules-container">
+          <h3>Reglas Generales</h3>
+          <ol>
+            <li>No se permite el uso de hacks o cheats en ninguna fase del torneo.</li>
+            <li>Se debe respetar a los árbitros y a los demás equipos en todo momento.</li>
+            <li>Las decisiones del staff son inapelables y definitivas.</li>
+            <li>En caso de incomparecencia se aplicarán sanciones y penalizaciones.</li>
+            <li>Revisa periódicamente esta sección para conocer actualizaciones en las normas.</li>
+            <li>El incumplimiento de las reglas puede llevar a la descalificación inmediata.</li>
+            <li>Todos los participantes deben confirmar la lectura de las normas antes de jugar.</li>
+            <li>El uso de lenguaje ofensivo o discriminatorio está prohibido.</li>
+            <li>Se recomienda a los equipos contar con una conexión estable a Internet.</li>
+            <li>En situaciones de fuerza mayor, el staff evaluará la situación para tomar decisiones.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- SECCIÓN: Equipos -->
+      <section id="teams" class="section">
+        <h2 class="section-title">Equipos Participantes</h2>
+        <div class="teams-container">
+          <div class="team-card">
+            <img src="assets/teams/team1.png" alt="Team 1" />
+            <h4>Team 1</h4>
+            <p>Región: NA</p>
+            <p>Equipo consolidado con experiencia internacional.</p>
+          </div>
+          <div class="team-card">
+            <img src="assets/teams/team2.png" alt="Team 2" />
+            <h4>Team 2</h4>
+            <p>Región: EU</p>
+            <p>Conocidos por su estrategia y trabajo en equipo.</p>
+          </div>
+          <div class="team-card">
+            <img src="assets/teams/team3.png" alt="Team 3" />
+            <h4>Team 3</h4>
+            <p>Región: KR</p>
+            <p>Potencia en la fase de selección y táctica.</p>
+          </div>
+          <div class="team-card">
+            <img src="assets/teams/team4.png" alt="Team 4" />
+            <h4>Team 4</h4>
+            <p>Región: CN</p>
+            <p>Equipo dinámico y agresivo.</p>
+          </div>
+          <div class="team-card">
+            <img src="assets/teams/team5.png" alt="Team 5" />
+            <h4>Team 5</h4>
+            <p>Región: NA</p>
+            <p>Emergente con tácticas innovadoras.</p>
+          </div>
+          <div class="team-card">
+            <img src="assets/teams/team6.png" alt="Team 6" />
+            <h4>Team 6</h4>
+            <p>Región: EU</p>
+            <p>Destacan por su coordinación y velocidad.</p>
+          </div>
+          <div class="team-card">
+            <img src="assets/teams/team7.png" alt="Team 7" />
+            <h4>Team 7</h4>
+            <p>Región: KR</p>
+            <p>Historial de victorias en torneos locales.</p>
+          </div>
+          <div class="team-card">
+            <img src="assets/teams/team8.png" alt="Team 8" />
+            <h4>Team 8</h4>
+            <p>Región: CN</p>
+            <p>Famosos por jugadas sorprendentes y creatividad.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN: Avisos y Comunicados -->
+      <section id="announcements" class="section">
+        <h2 class="section-title">Avisos y Comunicados</h2>
+        <div class="announcements-container">
+          <div class="announcement">
+            <h3>Inicio del Torneo</h3>
+            <p>El torneo dará inicio a partir del 21 de mayo. ¡No te lo pierdas!</p>
+          </div>
+          <div class="announcement">
+            <h3>Actualización de Reglas</h3>
+            <p>Se han actualizado las normas para garantizar la equidad. Consulta la sección de Normas para más detalles.</p>
+          </div>
+          <div class="announcement">
+            <h3>Problemas Técnicos</h3>
+            <p>Si experimentas problemas de conexión antes de una partida comunicarlo al staff.</p>
+          </div>
+          <div class="announcement">
+            <h3>Semifinales y Final</h3>
+            <p>La final y semifinales seran presenciales en el campus UFV con evento incluido</p>
+          </div>
+          <div class="announcement">
+            <h3>Reunión de Equipos</h3>
+            <p>Todos los equipos deben asistir a la reunión informativa el día previo al inicio del torneo se comunicara el dia de la reunion tras el 21 de mayo.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN: Inscripción (sustituida por la encuesta de Google Forms) -->
+      <section id="signup" class="section">
+        <h2 class="section-title">Inscripción al Torneo</h2>
+        <h4 class="section-title">Precio por integrante 5€</h4>
+        <h3>El pago de la inscripcion del equipo se hara a traves de un bizum al numero 653890743 con el concepto del nombre del equipo </h3>
+        <div class="signup-container">
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeSWxuSxLMHLNiErmagKBGC_prHp7LcoEjPxrvy0pjJRN6Qwg/viewform?embedded=true" width="640" height="1000" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+        </div>
+      </section>
+
+      <!-- SECCIÓN: Premios -->
+      <section id="premios" class="section">
+        <h2 class="section-title">Premios 16 equipos</h2>
+        <div class="premios-container">
+          <div class="premio">
+            <h3>1º Lugar</h3>
+            <p>€250 / 62,5% del bote</p>
+          </div>
+          <div class="premio">
+            <h3>2º Lugar</h3>
+            <p>€100 / 25% del bote</p>
+          </div>
+          <div class="premio">
+            <h3>3º Lugar</h3>
+            <p>€50 / 12,5% del bote</p>
+          </div>
+          <div class="premio">
+            <h3>Premios Patrocinadores</h3>
+            <p>Varían según acuerdo</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN: Contacto -->
+      <section id="contact" class="section">
+        <h2 class="section-title">Contacto</h2>
+        <div class="contact-container">
+          <p>Email: <a href="ysdtfia@gmail.com">ysdtfia@gmail.com</a></p>
+          <p>Teléfono: +34 653890743</p>
+          <p>M-515, km 1, 800, 28223 Pozuelo de Alarcón, Madrid, España</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- ASIDE: Redes Sociales y Socios -->
+    <aside>
+      <section class="social-media">
+        <h2 class="section-title">Redes Sociales</h2>
+        <ul>
+          <li><a href="https://www.twitch.tv/" target="_blank" rel="noopener">Twitch (todavia sin definir)</a></li>
+          <li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram (todavia sin definir)</a></li>
+        </ul>
+      </section>
+      <section class="partners">
+        <h2 class="section-title">Socios y Colaboradores</h2>
+        <ul>
+          <li><a href="https://partner1.com" target="_blank" rel="noopener">Partner 1</a></li>
+          <li><a href="https://partner2.com" target="_blank" rel="noopener">Partner 2</a></li>
+          <li><a href="https://partner3.com" target="_blank" rel="noopener">Partner 3</a></li>
+          <li><a href="https://partner4.com" target="_blank" rel="noopener">Partner 4</a></li>
+        </ul>
+      </section>
+    </aside>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-content">
+        <p>&copy; 2025 Torneo Universitario de League of Legends. Todos los derechos reservados.</p>
+        <p>Desarrollado por el equipo de Esports Pro.</p>
+      </div>
+    </footer>
+
+    <!-- SCRIPT para alternar secciones -->
+    <script>
+      // Alterna la clase "active" en las secciones según el enlace clicado
+      const navLinks = document.querySelectorAll('.nav-link');
+      const sections = document.querySelectorAll('.section');
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          const targetID = link.getAttribute('data-target');
+          sections.forEach(sec => {
+            if (sec.id === targetID) {
+              sec.classList.add('active');
+            } else {
+              sec.classList.remove('active');
+            }
+          });
+          // Cierra el menú en móvil
+          document.getElementById('menu-toggle').checked = false;
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      });
+    </script>
+  </body>
+</html>

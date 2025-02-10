@@ -1,0 +1,779 @@
+/* ==========================================================================
+   Archivo: styles.css
+   Descripción: Hoja de estilos para el torneo universitario de League of Legends.
+   Diseño profesional, minimalista y gaming, con degradados, sombras y animaciones.
+   La web es 100% responsive: en escritorio se muestra el bracket en árbol y en móvil
+   se muestra en formato vertical. El menú se vuelve desplegable en móvil.
+   ============================================================================= */
+
+/* ==========================================================================
+   RESET
+   ============================================================================= */
+   *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: #F8F8F8;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    line-height: 1.5;
+  }
+  
+  /* ==========================================================================
+     VARIABLES
+     ============================================================================= */
+  :root {
+    --primary-color: #3A506B;    /* Azul grisáceo oscuro */
+    --accent-color:  #5BC0EB;     /* Azul claro */
+    --bg-dark: #1C1C1C;
+    --bg-light: #FFFFFF;
+    --border-color: #CCCCCC;
+    --text-color: #333333;
+    --text-muted: #777777;
+  }
+  
+  /* ==========================================================================
+     UTILIDADES
+     ============================================================================= */
+  .util-text-center { text-align: center; }
+  .util-transition { transition: all 0.3s ease; }
+  
+  /* ==========================================================================
+     HEADER
+     ============================================================================= */
+  header {
+    background: linear-gradient(135deg, #3A506B, #5BC0EB);
+    padding: 20px;
+  }
+  .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+  }
+  .site-title {
+    font-size: 2.5rem;
+    color: #FFFFFF;
+  }
+  
+  /* ==========================================================================
+     NAVEGACIÓN
+     ============================================================================= */
+  nav {
+    background-color: #2C3E50;
+    padding: 10px 0;
+    position: relative;
+  }
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .menu-icon {
+    display: none;
+    font-size: 2rem;
+    color: #FFFFFF;
+    cursor: pointer;
+    position: absolute;
+    left: 20px;
+  }
+  .nav-menu {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    list-style: none;
+  }
+  .nav-link {
+    background-color: #34495E;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+  }
+  .nav-link:hover,
+  .nav-link:focus {
+    background-color: #1ABC9C;
+  }
+  
+  /* Menú móvil desplegable */
+  #menu-toggle {
+    display: none;
+  }
+  @media (max-width: 768px) {
+    .menu-icon {
+      display: block;
+    }
+    .nav-menu {
+      flex-direction: column;
+      background-color: #2C3E50;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      display: none;
+      padding: 10px 0;
+      z-index: 100;
+    }
+    #menu-toggle:checked + .menu-icon + .nav-menu {
+      display: flex;
+    }
+  }
+  
+  /* ==========================================================================
+     SECCIONES GENERALES
+     ============================================================================= */
+  main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+  }
+  .section {
+    padding: 40px 20px;
+    background-color: var(--bg-light);
+    margin-bottom: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: none;
+  }
+  .section.active {
+    display: block;
+  }
+  .section-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+  }
+  
+  /* ==========================================================================
+     BRACKET DESKTOP: ESTRUCTURA EN “ÁRBOL”
+     ============================================================================= */
+  .bracket-desktop {
+    display: block;
+    position: relative;
+    width: 1260px;
+    height: 1000px; /* Altura aumentada para mayor espacio vertical */
+    margin: 60px auto 0;
+  }
+  .bracket-desktop .round {
+    position: absolute;
+    width: 220px;
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  .bracket-desktop .round:hover {
+    transform: scale(1.02);
+  }
+  .bracket-desktop .round-title {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+  }
+  .bracket-desktop .matches {
+    position: relative;
+  }
+  /* Posición de cada columna */
+  .bracket-desktop .round-1 { left: 0; }
+  .bracket-desktop .round-2 { left: 300px; }
+  .bracket-desktop .round-3 { left: 600px; }
+  .bracket-desktop .round-4 { left: 900px; }
+  /* Posiciones para cada match (valores ajustados para mayor espacio vertical) */
+  .bracket-desktop .round-1 .match { position: absolute; width: 100%; min-height: 100px; }
+  .bracket-desktop .round-1 .match:nth-child(1) { top: 0; }
+  .bracket-desktop .round-1 .match:nth-child(2) { top: 110px; }
+  .bracket-desktop .round-1 .match:nth-child(3) { top: 220px; }
+  .bracket-desktop .round-1 .match:nth-child(4) { top: 330px; }
+  .bracket-desktop .round-1 .match:nth-child(5) { top: 440px; }
+  .bracket-desktop .round-1 .match:nth-child(6) { top: 550px; }
+  .bracket-desktop .round-1 .match:nth-child(7) { top: 660px; }
+  .bracket-desktop .round-1 .match:nth-child(8) { top: 770px; }
+  
+  .bracket-desktop .round-2 .match { position: absolute; width: 100%; min-height: 100px; }
+  .bracket-desktop .round-2 .match:nth-child(1) { top: 55px; }
+  .bracket-desktop .round-2 .match:nth-child(2) { top: 275px; }
+  .bracket-desktop .round-2 .match:nth-child(3) { top: 495px; }
+  .bracket-desktop .round-2 .match:nth-child(4) { top: 715px; }
+  
+  .bracket-desktop .round-3 .match { position: absolute; width: 100%; min-height: 100px; }
+  .bracket-desktop .round-3 .match:nth-child(1) { top: 165px; }
+  .bracket-desktop .round-3 .match:nth-child(2) { top: 605px; }
+  
+  .bracket-desktop .round-4 .match { position: absolute; width: 100%; min-height: 100px; }
+  .bracket-desktop .round-4 .match:nth-child(1) { top: 385px; }
+  
+  /* Estilos para cada match en desktop */
+  .bracket-desktop .match {
+    background-color: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    overflow: hidden;
+  }
+  .bracket-desktop .match:hover {
+    transform: translateY(-3px);
+    background-color: #F1F9FF;
+  }
+  .bracket-desktop .team {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  .bracket-desktop .team img.team-logo {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  .bracket-desktop .team .team-name {
+    font-weight: bold;
+    flex-grow: 1;
+    font-size: 1rem;
+    color: var(--text-color);
+  }
+  .bracket-desktop .team .team-score {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-weight: bold;
+  }
+  
+  /* ==========================================================================
+     BRACKET MÓVIL: VERSIÓN VERTICAL
+     ============================================================================= */
+  @media (max-width: 768px) {
+    .bracket-desktop { display: none; }
+    .bracket-mobile {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .bracket-mobile .round {
+      position: relative;
+      width: 100%;
+      background-color: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .bracket-mobile .round .round-title {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+    }
+    .bracket-mobile .matches {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .bracket-mobile .match {
+      background-color: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+    .bracket-mobile .match:hover {
+      transform: translateY(-3px);
+      background-color: #F1F9FF;
+    }
+    .bracket-mobile .team {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .bracket-mobile .team img.team-logo {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+    .bracket-mobile .team .team-name {
+      font-weight: bold;
+      flex-grow: 1;
+      font-size: 0.95rem;
+      color: var(--text-color);
+    }
+    .bracket-mobile .team .team-score {
+      font-size: 1.1rem;
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+    .nav-menu { flex-direction: column; gap: 10px; }
+    aside { grid-template-columns: 1fr; }
+  }
+  
+  /* ==========================================================================
+     PATROCINADORES (Esta sección ya no se usará en el menú, puedes mantenerla oculta)
+     ============================================================================= */
+  /*
+  .sponsors-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  .sponsor-item {
+    background: linear-gradient(135deg, #FFFFFF, #F0F0F0);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+  }
+  .sponsor-item:hover {
+    transform: translateY(-5px);
+  }
+  .sponsor-item img {
+    max-width: 80%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  .sponsor-item p {
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: bold;
+  }
+  */
+  
+  /* ==========================================================================
+     REDES SOCIALES Y SOCIOS: DISPOSICIÓN EN 2 COLUMNAS (forma de cubo)
+     ============================================================================= */
+  .social-media ul,
+  .partners ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    list-style: none;
+    padding: 10px 0;
+    justify-content: center;
+  }
+  .social-media ul li a,
+  .partners ul li a {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+  .social-media ul li a:hover,
+  .partners ul li a:hover {
+    background-color: var(--accent-color);
+  }
+  
+  /* ==========================================================================
+     NORMAS
+     ============================================================================= */
+  .rules-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .rules-container h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+  }
+  .rules-container ol {
+    list-style: decimal inside;
+    margin: 10px 0;
+    line-height: 1.6;
+    color: var(--text-color);
+  }
+  .rules-container li {
+    margin: 8px 0;
+  }
+  
+  /* ==========================================================================
+     EQUIPOS
+     ============================================================================= */
+  .teams-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  .team-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  .team-card:hover {
+    transform: translateY(-3px);
+  }
+  .team-card img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+  }
+  .team-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: var(--primary-color);
+  }
+  .team-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+  
+  /* ==========================================================================
+     AVISOS Y COMUNICADOS
+     ============================================================================= */
+  .announcements-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .announcement {
+    background: #FFFFFF;
+    border-left: 4px solid var(--primary-color);
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  .announcement h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+  }
+  .announcement p {
+    font-size: 1rem;
+    line-height: 1.4;
+    color: var(--text-color);
+  }
+  
+  /* ==========================================================================
+     INSCRIPCIÓN
+     ============================================================================= */
+  .signup-container {
+    max-width: 650px;
+    max-height: 350px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  .signup-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .signup-container label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: var(--primary-color);
+  }
+  .signup-container input,
+  .signup-container button {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 4px;
+    width: 100%;
+  }
+  .signup-container input {
+    border: 1px solid var(--border-color);
+    background-color: #F9F9F9;
+    color: var(--text-color);
+  }
+  .signup-container button {
+    border: none;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .signup-container button:hover {
+    background-color: var(--accent-color);
+  }
+  
+  /* ==========================================================================
+     DOCUMENTACIÓN, EXTRA INFO Y DETALLES TÉCNICOS
+     ============================================================================= */
+  #documentation,
+  #extra-info,
+  #tech-details {
+    background: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  #documentation h3,
+  #extra-info h3,
+  #tech-details h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+  }
+  #documentation article,
+  #extra-info article,
+  #tech-details article {
+    margin-bottom: 20px;
+  }
+  
+  /* ==========================================================================
+     CONTACTO (SECCIÓN)
+     ============================================================================= */
+  #contact {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  #contact p {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 10px;
+  }
+  #contact a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+  
+  /* ==========================================================================
+     PREMIOS (nueva sección)
+     ============================================================================= */
+  .premios-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+  }
+  .premio {
+    background: linear-gradient(135deg, #FFFFFF, #F0F0F0);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 300px;
+  }
+  .premio h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+  }
+  .premio p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+  }
+  
+  /* ==========================================================================
+     ASIDE: REDES SOCIALES Y SOCIOS (dispuestos en forma de cubo 2x2)
+     ============================================================================= */
+  aside {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  aside section {
+    background: #FFFFFF;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  aside h2.section-title {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 5px;
+  }
+  .social-media ul,
+  .partners ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    list-style: none;
+    padding: 10px 0;
+    justify-content: center;
+  }
+  .social-media ul li a,
+  .partners ul li a {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+  .social-media ul li a:hover,
+  .partners ul li a:hover {
+    background-color: var(--accent-color);
+  }
+  
+  /* ==========================================================================
+     FOOTER
+     ============================================================================= */
+  footer {
+    background: #111111;
+    border-top: 2px solid var(--border-color);
+    padding: 20px 10px;
+    text-align: center;
+    color: #fff;
+    font-size: 0.9rem;
+  }
+  .footer-content p {
+    margin-bottom: 5px;
+  }
+  .footer-content a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-content a:hover {
+    color: var(--accent-color);
+  }
+  
+  /* ==========================================================================
+     ANIMACIONES
+     ============================================================================= */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .section,
+  .match,
+  .team-card,
+  .announcement,
+  .signup-container {
+    animation: fadeIn 0.8s ease-in-out;
+  }
+  
+  /* ==========================================================================
+     MEDIA QUERIES: RESPONSIVIDAD
+     ============================================================================= */
+  @media (max-width: 768px) {
+    /* En móvil se oculta la versión desktop del bracket y se muestra la versión vertical */
+    .bracket-desktop { display: none; }
+    .bracket-mobile {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .bracket-mobile .round {
+      position: relative;
+      width: 100%;
+      background-color: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .bracket-mobile .round .round-title {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+    }
+    .bracket-mobile .matches {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .bracket-mobile .match {
+      background-color: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+    .bracket-mobile .match:hover {
+      transform: translateY(-3px);
+      background-color: #F1F9FF;
+    }
+    .bracket-mobile .team {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .bracket-mobile .team img.team-logo {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+    .bracket-mobile .team .team-name {
+      font-weight: bold;
+      flex-grow: 1;
+      font-size: 0.95rem;
+      color: var(--text-color);
+    }
+    .bracket-mobile .team .team-score {
+      font-size: 1.1rem;
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+    .nav-menu { flex-direction: column; gap: 10px; }
+    aside { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    html { font-size: 14px; }
+    .nav-container ul { gap: 8px; }
+  }
+  
