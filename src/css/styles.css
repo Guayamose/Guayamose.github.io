@@ -118,7 +118,7 @@
     list-style: none;
   }
   
-  /* Importante: Ocultamos la versión móvil de los brackets por defecto */
+  /* Ocultamos la versión móvil de los brackets en escritorio */
   .bracket-mobile {
     display: none;
   }
@@ -160,7 +160,7 @@
     }
     /* Cuando el checkbox está marcado se expande el menú */
     #menu-toggle:checked + .menu-icon + .nav-menu {
-      max-height: 500px;
+      max-height: 100vh;  /* Aumentamos el valor para que quepan todos los elementos */
       animation: slideDown 0.5s ease-out;
     }
     /* Enlaces en móvil: se muestran en bloque con separación clara */
@@ -386,12 +386,27 @@
       color: var(--primary-color);
       font-weight: bold;
     }
-    /* Además, forzamos que el <aside> se muestre en una columna en móvil */
+    
+    /* Ajustes para el <aside> en móvil:
+       Se fuerza que se muestre en vertical, ocupe el 100% del ancho y se reordene */
     aside {
-      grid-template-columns: 1fr;
-      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      box-sizing: border-box;
       padding: 10px;
       margin: 10px auto;
+    }
+    aside section {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    /* Reordenamos: primero Socios y Colaboradores, luego Redes Sociales */
+    aside .partners {
+      order: 1;
+    }
+    aside .social-media {
+      order: 2;
     }
   }
   
@@ -552,7 +567,7 @@
      ============================================================================= */
   .signup-container {
     max-width: 650px;
-    max-height: 550px;
+    max-height: 350px;
     margin: 0 auto;
     background: #FFFFFF;
     border: 1px solid var(--border-color);
