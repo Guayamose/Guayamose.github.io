@@ -567,7 +567,7 @@
      ============================================================================= */
   .signup-container {
     max-width: 650px;
-    max-height: 350px;
+    max-height: 550px;
     margin: 0 auto;
     background: #FFFFFF;
     border: 1px solid var(--border-color);
