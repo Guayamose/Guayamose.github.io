@@ -14,6 +14,17 @@
     margin: 0;
     padding: 0;
   }
+  
+  /* Regla global para que las imágenes se adapten al contenedor */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
   html {
     font-size: 16px;
     scroll-behavior: smooth;
@@ -23,14 +34,21 @@
     font-family: 'Roboto', sans-serif;
     color: #333;
     line-height: 1.5;
+    
+    /* Flexbox para estructurar la página y empujar el footer hacia abajo */
+    display: flex;
+    flex-direction: column;
+    
+    /* Evitamos scroll horizontal */
+    overflow-x: hidden;
   }
   
   /* ==========================================================================
      VARIABLES
      ============================================================================= */
   :root {
-    --primary-color: #3A506B;    /* Azul grisáceo oscuro */
-    --accent-color:  #5BC0EB;     /* Azul claro */
+    --primary-color: #3A506B;
+    --accent-color:  #5BC0EB;
     --bg-dark: #1C1C1C;
     --bg-light: #FFFFFF;
     --border-color: #CCCCCC;
@@ -99,6 +117,12 @@
     gap: 15px;
     list-style: none;
   }
+  
+  /* Importante: Ocultamos la versión móvil de los brackets por defecto */
+  .bracket-mobile {
+    display: none;
+  }
+  
   .nav-link {
     background-color: #34495E;
     color: #FFFFFF;
@@ -121,20 +145,47 @@
     .menu-icon {
       display: block;
     }
+    /* Usamos max-height y transición para el efecto de slideDown */
     .nav-menu {
       flex-direction: column;
       background-color: #2C3E50;
       position: absolute;
-      top: 60px;
+      top: 100%;
       left: 0;
       right: 0;
-      display: none;
-      padding: 10px 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out;
       z-index: 100;
     }
+    /* Cuando el checkbox está marcado se expande el menú */
     #menu-toggle:checked + .menu-icon + .nav-menu {
-      display: flex;
+      max-height: 500px;
+      animation: slideDown 0.5s ease-out;
     }
+    /* Enlaces en móvil: se muestran en bloque con separación clara */
+    .nav-link {
+      display: block;
+      margin: 8px 15px;
+      padding: 15px;
+      font-size: 1.2rem;
+      background-color: #34495E;
+      border-radius: 5px;
+      text-align: center;
+      color: #fff;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    .nav-link:hover,
+    .nav-link:focus {
+      background-color: #1ABC9C;
+    }
+  }
+  
+  /* Animación para la aparición del menú móvil */
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
   
   /* ==========================================================================
@@ -144,6 +195,7 @@
     max-width: 1200px;
     margin: 20px auto;
     padding: 0 15px;
+    flex: 1; /* Permite que el main se expanda y empuje el footer al fondo */
   }
   .section {
     padding: 40px 20px;
@@ -152,6 +204,7 @@
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     display: none;
+    animation: fadeIn 0.8s ease-in-out;
   }
   .section.active {
     display: block;
@@ -172,7 +225,7 @@
     display: block;
     position: relative;
     width: 1260px;
-    height: 1000px; /* Altura aumentada para mayor espacio vertical */
+    height: 1000px;
     margin: 60px auto 0;
   }
   .bracket-desktop .round {
@@ -204,7 +257,7 @@
   .bracket-desktop .round-2 { left: 300px; }
   .bracket-desktop .round-3 { left: 600px; }
   .bracket-desktop .round-4 { left: 900px; }
-  /* Posiciones para cada match (valores ajustados para mayor espacio vertical) */
+  /* Posiciones para cada match */
   .bracket-desktop .round-1 .match { position: absolute; width: 100%; min-height: 100px; }
   .bracket-desktop .round-1 .match:nth-child(1) { top: 0; }
   .bracket-desktop .round-1 .match:nth-child(2) { top: 110px; }
@@ -275,6 +328,7 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 20px;
+      margin: 20px 0;
     }
     .bracket-mobile .round {
       position: relative;
@@ -332,12 +386,17 @@
       color: var(--primary-color);
       font-weight: bold;
     }
-    .nav-menu { flex-direction: column; gap: 10px; }
-    aside { grid-template-columns: 1fr; }
+    /* Además, forzamos que el <aside> se muestre en una columna en móvil */
+    aside {
+      grid-template-columns: 1fr;
+      max-width: 100%;
+      padding: 10px;
+      margin: 10px auto;
+    }
   }
   
   /* ==========================================================================
-     PATROCINADORES (Esta sección ya no se usará en el menú, puedes mantenerla oculta)
+     PATROCINADORES (estilos opcionales)
      ============================================================================= */
   /*
   .sponsors-container {
@@ -371,7 +430,7 @@
   */
   
   /* ==========================================================================
-     REDES SOCIALES Y SOCIOS: DISPOSICIÓN EN 2 COLUMNAS (forma de cubo)
+     REDES SOCIALES Y SOCIOS: DISPOSICIÓN EN 2 COLUMNAS
      ============================================================================= */
   .social-media ul,
   .partners ul {
@@ -493,7 +552,7 @@
      ============================================================================= */
   .signup-container {
     max-width: 650px;
-    max-height: 350px;
+    max-height: 550px;
     margin: 0 auto;
     background: #FFFFFF;
     border: 1px solid var(--border-color);
@@ -533,6 +592,11 @@
   }
   .signup-container button:hover {
     background-color: var(--accent-color);
+  }
+  /* Iframe adaptado para móviles */
+  .signup-container iframe {
+    width: 100%;
+    height: 1200px;
   }
   
   /* ==========================================================================
@@ -585,7 +649,7 @@
   }
   
   /* ==========================================================================
-     PREMIOS (nueva sección)
+     PREMIOS
      ============================================================================= */
   .premios-container {
     display: grid;
@@ -616,7 +680,7 @@
   }
   
   /* ==========================================================================
-     ASIDE: REDES SOCIALES Y SOCIOS (dispuestos en forma de cubo 2x2)
+     ASIDE: REDES SOCIALES Y SOCIOS
      ============================================================================= */
   aside {
     max-width: 1200px;
@@ -694,84 +758,18 @@
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  .section,
-  .match,
-  .team-card,
-  .announcement,
-  .signup-container {
-    animation: fadeIn 0.8s ease-in-out;
-  }
   
   /* ==========================================================================
-     MEDIA QUERIES: RESPONSIVIDAD
+     MEDIA QUERIES ADICIONALES
      ============================================================================= */
   @media (max-width: 768px) {
-    /* En móvil se oculta la versión desktop del bracket y se muestra la versión vertical */
-    .bracket-desktop { display: none; }
-    .bracket-mobile {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
+    /* Reducir tamaño del logo en móvil */
+    header .logo {
+      width: 60px;
+      height: 60px;
     }
-    .bracket-mobile .round {
-      position: relative;
-      width: 100%;
-      background-color: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .bracket-mobile .round .round-title {
-      text-align: center;
-      margin-bottom: 10px;
-      font-size: 1.5rem;
-      color: var(--primary-color);
-    }
-    .bracket-mobile .matches {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .bracket-mobile .match {
-      background-color: #FFFFFF;
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-    }
-    .bracket-mobile .match:hover {
-      transform: translateY(-3px);
-      background-color: #F1F9FF;
-    }
-    .bracket-mobile .team {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .bracket-mobile .team img.team-logo {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      margin-right: 8px;
-    }
-    .bracket-mobile .team .team-name {
-      font-weight: bold;
-      flex-grow: 1;
-      font-size: 0.95rem;
-      color: var(--text-color);
-    }
-    .bracket-mobile .team .team-score {
-      font-size: 1.1rem;
-      color: var(--primary-color);
-      font-weight: bold;
-    }
-    .nav-menu { flex-direction: column; gap: 10px; }
-    aside { grid-template-columns: 1fr; }
   }
+  
   @media (max-width: 480px) {
     html { font-size: 14px; }
     .nav-container ul { gap: 8px; }
