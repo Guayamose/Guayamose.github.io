@@ -34,13 +34,15 @@
     scroll-behavior: smooth;
   }
   body {
-    /* Fondo global: degradado ligeramente más oscuro para mayor contraste, con ciclo alternado para un rewind lento */
-    background: linear-gradient(135deg, #c0c4c8, #d0d4d8);
-    background-size: 300% 300%;
+    /* Fondo global: degradado con colores oscuros y saturados junto con textura exagerada */
+    background: 
+      linear-gradient(135deg, rgba(20,30,40,0.9), rgba(50,60,70,0.9)),
+      url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+    background-blend-mode: multiply;
     animation: subtleGradient 35s linear infinite alternate;
-    background-attachment: fixed;
+
     
-    /* Fuente global cambiada a Montserrat, más acorde a la estética deseada */
+    /* Fuente global cambiada a Montserrat */
     font-family: 'Montserrat', sans-serif;
     color: #333;
     line-height: 1.5;
@@ -51,12 +53,8 @@
     position: relative;
   }
   
-  /* Animación para el fondo global */
-  @keyframes subtleGradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
+
+
   
   /* ========================================================================== 
      VARIABLES
@@ -66,7 +64,7 @@
     --accent-color:  #5BC0EB;
     --bg-dark: #1C1C1C;
     --bg-light: #FFFFFF;
-    --border-color: #CCCCCC;
+    --border-color: #919191;
     --text-color: #333333;
     --text-muted: #777777;
   }
@@ -168,10 +166,15 @@
   /* ========================================================================== 
      NAVIGACIÓN (CINTA DEL MENÚ)
      ============================================================================= */
+  /* Para el menú en escritorio se modifica el fondo para que tenga un degradado similar al del encabezado,
+     pero se aumenta el contraste con un overlay oscuro */
   nav {
-    background: rgba(44,62,80,0.85);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    background: 
+      linear-gradient(135deg, #3A506B, #5BC0EB),
+      rgba(0,0,0,0.25);
+    background-blend-mode: multiply;
+    background-size: 200% 200%;
+    animation: gradientShift 5s ease infinite;
     padding: 20px 0;
     position: relative;
     z-index: 300;
@@ -338,7 +341,7 @@
     position: absolute;
     width: 220px;
     background-color: var(--bg-light);
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     padding: 10px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -352,7 +355,7 @@
     text-align: center;
     margin-bottom: 10px;
     color: var(--primary-color);
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
     padding-bottom: 5px;
   }
   .bracket-desktop .matches {
@@ -437,7 +440,7 @@
   }
   .bracket-desktop .match {
     background-color: #FFFFFF;
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     border-radius: 6px;
     padding: 10px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
@@ -490,7 +493,7 @@
       position: relative;
       width: 100%;
       background-color: #FFFFFF;
-      border: 1px solid var(--border-color);
+      border: 2px solid var(--border-color);
       border-radius: 8px;
       padding: 10px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.15);
@@ -508,7 +511,7 @@
     }
     .bracket-mobile .match {
       background-color: #FFFFFF;
-      border: 1px solid var(--border-color);
+      border: 2px solid var(--border-color);
       border-radius: 6px;
       padding: 10px;
       display: flex;
@@ -566,10 +569,7 @@
     }
   }
   
-  /* ========================================================================== 
-     PATROCINADORES (OPCIONAL)
-     ============================================================================= */
-  /*
+
   .sponsors-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -578,7 +578,7 @@
   }
   .sponsor-item {
     background: linear-gradient(135deg, #FFFFFF, #F0F0F0);
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     padding: 15px;
     text-align: center;
@@ -636,7 +636,7 @@
     margin: 0 auto;
     padding: 20px;
     background: #FFFFFF;
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   }
@@ -666,7 +666,7 @@
   }
   .team-card {
     background: #FFFFFF;
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     padding: 15px;
     text-align: center;
@@ -728,7 +728,7 @@
     max-height: 550px;
     margin: 0 auto;
     background: #FFFFFF;
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.15);
@@ -751,7 +751,7 @@
     width: 100%;
   }
   .signup-container input {
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     background-color: #F9F9F9;
     color: var(--text-color);
   }
@@ -778,7 +778,7 @@
   #extra-info,
   #tech-details {
     background: #FFFFFF;
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     padding: 20px;
     margin: 20px auto;
@@ -806,7 +806,7 @@
     margin: 0 auto;
     padding: 20px;
     background: #FFFFFF;
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.15);
   }
@@ -832,7 +832,7 @@
   }
   .premio {
     background: linear-gradient(135deg, #FFFFFF, #F0F0F0);
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     padding: 20px;
     text-align: center;
@@ -864,7 +864,7 @@
   }
   aside section {
     background: #FFFFFF;
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     padding: 15px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
@@ -1058,7 +1058,7 @@
   }
   .card-interactive {
     background: var(--bg-light);
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     padding: 20px;
     margin: 10px;
@@ -1071,7 +1071,7 @@
   }
   .list-interactive li {
     padding: 10px;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
     transition: background-color 0.3s ease;
   }
   .list-interactive li:hover {
@@ -1217,7 +1217,7 @@
   .reactive-box {
     padding: 20px;
     background: var(--bg-light);
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     transition: transform 0.5s ease, filter 0.5s ease;
   }
@@ -1304,7 +1304,7 @@
      BLOQUE EXTRA: COMPONENTES REUTILIZABLES REPETIDOS
      ============================================================================= */
   .component-box {
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     padding: 20px;
     background: var(--bg-light);
@@ -1392,6 +1392,43 @@
   }
   
   /* ========================================================================== 
+     TEXTO FINAL: MODIFICACIONES AL MENÚ Y AL FONDO DE LA WEB
+     ============================================================================= */
+  /* Se aumenta la visibilidad de la textura en el fondo global y se mejora el menú en escritorio */
+  body {
+
+      --s: 105px; /* control the size*/
+      --c1: #84c4f5;
+      --c2: #437bb6;
+      --c3: #6aa0d2;
+      
+      background:
+        conic-gradient(from 75deg,var(--c1)   15deg ,var(--c2) 0 30deg ,#0000 0 180deg,
+                                  var(--c2) 0 195deg,var(--c1) 0 210deg,#0000 0) 
+           calc(var(--s)/2) calc(.5*var(--s)/tan(30deg)),
+        conic-gradient(var(--c1)   30deg ,var(--c3) 0 75deg ,var(--c1) 0 90deg, var(--c2) 0 105deg,
+                       var(--c3) 0 150deg,var(--c2) 0 180deg,var(--c3) 0 210deg,var(--c1) 0 256deg,
+                       var(--c2) 0 270deg,var(--c1) 0 286deg,var(--c2) 0 331deg,var(--c3) 0);
+      background-size: var(--s) calc(var(--s)/tan(30deg));
+
+    }
+
+
+  
+  nav {
+    background: 
+      linear-gradient(135deg, #3A506B, #5BC0EB),
+      rgba(0,0,0,0.15);
+    background-blend-mode: multiply;
+    background-size: 200% 200%;
+    animation: gradientShift 5s ease infinite;
+    padding: 20px 0;
+    position: relative;
+    z-index: 300;
+    margin-top: -5px;
+  }
+  
+  /* ========================================================================== 
      FIN DEL CSS
      ============================================================================= */
   
@@ -1399,9 +1436,10 @@
      bloques de efectos, animaciones y transiciones que proporcionan una experiencia
      visual más profesional y dinámica. Se ha cambiado la fuente global a Montserrat,
      y el encabezado utiliza "Bebas Neue" (similar a la de Riot Games) con un efecto
-     textural, sombra y degradado que combina azul muy oscuro y gris. Los fondos globales
-     y de secciones han sido ajustados para que la animación del overlay oscile entre
-     valores intermedios y para que el contenido de cada sección (todos los elementos hijos)
-     se muestre opaco, evitando que se transparente el fondo.
+     textural, sombra y degradado que combina azul muy oscuro y gris. Además, se ha
+     intensificado el borde de los elementos (ahora de 2px) y se ha configurado el fondo global
+     para que tenga un color y textura exagerados.
   */
+  
+  
   
