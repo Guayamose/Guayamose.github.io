@@ -1546,3 +1546,6 @@
     margin-left: -140px; /* Ajusta este valor según la necesidad */
   }
 }
+.logo {
+   transform: translateY(6px) scale(0.9); /* Desplaza 10px hacia abajo y reduce su tamaño al 80% */
+ }
