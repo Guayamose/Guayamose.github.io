@@ -1554,6 +1554,6 @@
 /* Mover el título ligeramente a la izquierda en dispositivos de escritorio */
 @media (min-width: 1024px) {
   .titulo-animado {
-    margin-left: -70px; /* Ajusta este valor según la necesidad */
+    margin-left: -90px; /* Ajusta este valor según la necesidad */
   }
 }
