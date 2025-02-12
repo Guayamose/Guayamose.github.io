@@ -1535,7 +1535,7 @@
   }
   /* La primera "L" (después de "UFV") se mueve 10px a la derecha */
   .titulo-animado span:nth-of-type(2) {
-    transform: translateX(5px);
+    transform: translateX(6px);
   }
   /* La segunda "L" (antes de "CUP") se mueve 10px a la izquierda */
   .titulo-animado span:nth-of-type(3) {
