@@ -139,8 +139,8 @@
     align-items: center;
   }
   .logo {
-    width: 220px;
-    height: 220px;
+    width: 250px;
+    height: 250px;
     margin-bottom: 15px;
     filter: drop-shadow(0 3px 6px rgba(0,0,0,0.6));
     transition: transform 0.5s ease, filter 0.5s ease;
@@ -1087,7 +1087,7 @@
   }
   
   /* ========================================================================== 
-     BLOQUE EXTRA: DETALLES TIPOGRÁFICOS Y DECORATIVOS
+     BLOQUE EXTRA: DETALLES TIPOGRAFÍCOS Y DECORATIVOS
      ============================================================================= */
   .title-decorated {
     position: relative;
@@ -1377,8 +1377,8 @@
       font-size: 1.2rem;
     }
     .logo {
-      width: 150px;
-      height: 150px;
+      width: 70px;
+      height: 70px;
     }
     .nav-link {
       font-size: 0.95rem;
@@ -1441,4 +1441,101 @@
      para que tenga un color y textura exagerados.
   */
   
-  
+  /* =============================================================================
+     Título Animado con Logo Intercalado, versión final con L's extremadamente pegadas
+     ------------------------------------------------------------------------------
+     Se eliminan prácticamente todos los espacios entre los elementos y se aplican 
+     márgenes negativos al logo para que las letras "L" de ambos spans queden 
+     mucho más juntas tanto en escritorio como en móvil.
+     
+     Instrucciones HTML:
+       <h2 class="titulo-animado">
+         <span data-text="UFV L">UFV L</span>
+         <span class="logo-letra"></span>
+         <span data-text="L CUP">L CUP</span>
+       </h2>
+    ============================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+.titulo-animado {
+  position: relative;
+  font-size: 10vw; /* Tamaño base para escritorio */
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  color: #235283;
+  -webkit-text-stroke: 0.3vw #383d52;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0; /* Eliminamos el espacio entre elementos */
+  margin: 0 auto;
+}
+
+.titulo-animado span {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  padding: 0; /* Sin padding para unir las letras */
+}
+
+.titulo-animado span[data-text] {
+  padding: 0; /* Sin espacio extra entre las "L"s */
+}
+
+/* Efecto de revelado para los spans con data-text (sin afectar al logo) */
+.titulo-animado span[data-text]::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #2d445d;
+  overflow: hidden;
+  clip-path: inset(0 100% 0);
+  animation: revealAnimation 10s linear infinite;
+}
+
+@keyframes revealAnimation {
+  0%, 10%, 100% { clip-path: inset(0 100% 0); }
+  70%, 90% { clip-path: inset(0 0 0); }
+}
+
+/* Estilo para el logo: contenedor cuadrado con márgenes negativos */
+.titulo-animado .logo-letra {
+  display: none;
+  width: 0.7em; /* Tamaño del logo reducido */
+  aspect-ratio: 1/1;
+  background: url('../img/logo.png') no-repeat center center;
+  background-size: cover;
+  margin-left: -0.2em;  /* Márgen negativo para acercar la "L" anterior */
+  margin-right: -0.2em; /* Márgen negativo para acercar la "L" siguiente */
+}
+
+/* Efecto hover opcional para el logo */
+.titulo-animado .logo-letra:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+/* ----- Ajustes para dispositivos móviles ----- */
+@media (max-width: 767px) {
+  .titulo-animado {
+    font-size: 10vw;       /* Tamaño ajustado para que quepa en una línea */
+    white-space: nowrap;   /* Forzamos que el título se mantenga en una línea */
+    text-align: center;
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+    padding: 0 0.1em;
+  }
+}
+
+/* ----- Ajustes para pantallas de escritorio ----- */
+@media (min-width: 768px) {
+  .titulo-animado {
+    margin-left: -0.2em; /* Ligero desplazamiento hacia la derecha */
+    margin-right: auto;
+  }
+}
