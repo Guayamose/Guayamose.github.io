@@ -1397,10 +1397,10 @@
   /* Se aumenta la visibilidad de la textura en el fondo global y se mejora el menú en escritorio */
   body {
 
-      --s: 105px; /* control the size*/
-      --c1: #84c4f5;
-      --c2: #437bb6;
-      --c3: #6aa0d2;
+      --s: 110px; /* control the size*/
+      --c1: #9c9c9c;
+      --c2: #c2c2c2;
+      --c3: #d6d6d6;
       
       background:
         conic-gradient(from 75deg,var(--c1)   15deg ,var(--c2) 0 30deg ,#0000 0 180deg,
@@ -1440,6 +1440,5 @@
      intensificado el borde de los elementos (ahora de 2px) y se ha configurado el fondo global
      para que tenga un color y textura exagerados.
   */
-  
   
   
