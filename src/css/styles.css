@@ -257,6 +257,9 @@
       background-color: #1ABC9C;
       transform: scale(1.03);
     }
+    .logo {
+      transform: translateY(6px) scale(0.9); /* Desplaza 10px hacia abajo y reduce su tamaño al 80% */
+ }
   }
   
   /* ========================================================================== 
@@ -1546,6 +1549,4 @@
     margin-left: -140px; /* Ajusta este valor según la necesidad */
   }
 }
-.logo {
-   transform: translateY(6px) scale(0.9); /* Desplaza 10px hacia abajo y reduce su tamaño al 80% */
- }
+
