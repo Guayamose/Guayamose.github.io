@@ -43,7 +43,7 @@
 
     
     /* Fuente global cambiada a Montserrat */
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Rockwell', sans-serif;
     color: #333;
     line-height: 1.5;
     
@@ -239,7 +239,7 @@
     }
     #menu-toggle:checked + .menu-icon + .nav-menu {
       max-height: 100vh;
-      animation: slideDown 0.5s ease-out;
+      animation: slideDown 1s loop;
     }
     .nav-link {
       display: block;
