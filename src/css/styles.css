@@ -1527,25 +1527,7 @@
       margin-top: 50px; /* Espacio superior opcional */
     }
 
-    /* Estilos del botón/enlace */
-    .box-link-button {
-      display: inline-block;             /* Para que respete alto y ancho */
-      background-color: #6441A5;        /* Color morado (puedes ajustarlo) */
-      color: #FFFFFF;                   /* Texto en blanco */
-      padding: 15px 30px;               /* Espacio interno */
-      border-radius: 8px;               /* Bordes redondeados */
-      text-decoration: none;            /* Sin subrayado */
-      font-family: Arial, sans-serif;   
-      font-size: 16px;
-      font-weight: bold;                /* Texto en negrita */
-      box-shadow: 0 0 10px rgba(100, 65, 165, 0.6); /* Efecto glow */
-      transition: box-shadow 0.3s ease; /* Transición suave al pasar el ratón */
-    }
 
-    /* Efecto al pasar el cursor */
-    .box-link-button:hover {
-      box-shadow: 0 0 15px rgba(100, 65, 165, 0.8);
-    }   
 
 /* ----- Ajustes para dispositivos móviles ----- */
 @media (max-width: 767px) {
@@ -1582,3 +1564,76 @@
     margin-left: -0px; /* Ajusta este valor según la necesidad */
   }
 }
+
+/* Contenedor que centra el botón tanto vertical como horizontalmente */
+    .center-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;  /* Ocupa toda la ventana del navegador */
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Estilos del enlace con apariencia de caja */
+    .box-link {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: #003865; /* Color azul */
+      color: #ffffff;           /* Texto en blanco */
+      text-decoration: none;    /* Quita el subrayado */
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 6px;
+      /* Aplicamos la animación con 10 pasos */
+      animation: crazyAnimation 5s infinite alternate ease-in-out;
+    }
+
+    /* Definimos la animación con 10 pasos (0%, 10%, 20%, ... 100%) */
+    @keyframes crazyAnimation {
+      0% {
+        transform: scale(1);
+        background-color: #003865;
+      }
+      10% {
+        transform: scale(1.05);
+        background-color: #004f99;
+      }
+      20% {
+        transform: rotate(5deg);
+        background-color: #003865;
+      }
+      30% {
+        transform: rotate(-5deg);
+        background-color: #004f99;
+      }
+      40% {
+        transform: skewX(5deg);
+        background-color: #003865;
+      }
+      50% {
+        transform: skewX(-5deg);
+        background-color: #004f99;
+      }
+      60% {
+        transform: translateX(5px);
+        background-color: #003865;
+      }
+      70% {
+        transform: translateX(-5px);
+        background-color: #004f99;
+      }
+      80% {
+        transform: scale(0.95);
+        background-color: #003865;
+      }
+      90% {
+        transform: scale(1.1);
+        background-color: #004f99;
+      }
+      100% {
+        transform: scale(1) rotate(0deg) skewX(0deg);
+        background-color: #003865;
+      }
+    }
