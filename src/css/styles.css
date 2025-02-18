@@ -1521,6 +1521,20 @@
   transform: scale(1.1);
   transition: transform 0.3s ease;
 }
+    .box-link {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50; /* Color de fondo */
+      color: #ffffff;           /* Color del texto */
+      text-decoration: none;    /* Quita el subrayado del enlace */
+      border-radius: 4px;       /* Esquinas redondeadas */
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+    }
+    
+    .box-link:hover {
+      background-color: #45a049; /* Color de fondo al pasar el ratón */
+    }
 
 /* ----- Ajustes para dispositivos móviles ----- */
 @media (max-width: 767px) {
