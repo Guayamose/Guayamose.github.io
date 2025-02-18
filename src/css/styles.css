@@ -1521,27 +1521,31 @@
   transform: scale(1.1);
   transition: transform 0.3s ease;
 }
+  /* Contenedor para centrar el botón */
     .center-container {
-      text-align: center; /* Centra el contenido dentro del contenedor */
-      margin-top: 50px;   /* Margen superior opcional para separarlo un poco */
+      text-align: center;
+      margin-top: 50px; /* Espacio superior opcional */
     }
 
-    /* Estilos del enlace con apariencia de caja */
-    .box-link {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #003865; /* Color de fondo */
-      color: #ffffff;            /* Color del texto */
-      text-decoration: none;     /* Quita el subrayado del enlace */
-      border-radius: 4px;        /* Esquinas redondeadas */
-      font-family: Arial, sans-serif;
+    /* Estilos del botón/enlace */
+    .glow-button {
+      display: inline-block;             /* Para que respete alto y ancho */
+      background-color: #6441A5;        /* Color morado (puedes ajustarlo) */
+      color: #FFFFFF;                   /* Texto en blanco */
+      padding: 15px 30px;               /* Espacio interno */
+      border-radius: 8px;               /* Bordes redondeados */
+      text-decoration: none;            /* Sin subrayado */
+      font-family: Arial, sans-serif;   
       font-size: 16px;
+      font-weight: bold;                /* Texto en negrita */
+      box-shadow: 0 0 10px rgba(100, 65, 165, 0.6); /* Efecto glow */
+      transition: box-shadow 0.3s ease; /* Transición suave al pasar el ratón */
     }
-    
-    /* Efecto al pasar el ratón por encima del enlace */
-    .box-link:hover {
-      background-color: #649eff;
-    }
+
+    /* Efecto al pasar el cursor */
+    .glow-button:hover {
+      box-shadow: 0 0 15px rgba(100, 65, 165, 0.8);
+    }   
 
 /* ----- Ajustes para dispositivos móviles ----- */
 @media (max-width: 767px) {
