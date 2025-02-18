@@ -1521,20 +1521,26 @@
   transform: scale(1.1);
   transition: transform 0.3s ease;
 }
+    .center-container {
+      text-align: center; /* Centra el contenido dentro del contenedor */
+      margin-top: 50px;   /* Margen superior opcional para separarlo un poco */
+    }
+
+    /* Estilos del enlace con apariencia de caja */
     .box-link {
-      position: center;
       display: inline-block;
       padding: 10px 20px;
       background-color: #003865; /* Color de fondo */
-      color: #ffffff;           /* Color del texto */
-      text-decoration: none;    /* Quita el subrayado del enlace */
-      border-radius: 4px;       /* Esquinas redondeadas */
+      color: #ffffff;            /* Color del texto */
+      text-decoration: none;     /* Quita el subrayado del enlace */
+      border-radius: 4px;        /* Esquinas redondeadas */
       font-family: Arial, sans-serif;
       font-size: 16px;
     }
     
+    /* Efecto al pasar el ratón por encima del enlace */
     .box-link:hover {
-      background-color: #649eff; /* Color de fondo al pasar el ratón */
+      background-color: #649eff;
     }
 
 /* ----- Ajustes para dispositivos móviles ----- */
