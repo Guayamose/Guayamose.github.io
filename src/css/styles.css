@@ -1528,7 +1528,7 @@
     }
 
     /* Estilos del botón/enlace */
-    .glow-button {
+    .box-link-button {
       display: inline-block;             /* Para que respete alto y ancho */
       background-color: #6441A5;        /* Color morado (puedes ajustarlo) */
       color: #FFFFFF;                   /* Texto en blanco */
@@ -1543,7 +1543,7 @@
     }
 
     /* Efecto al pasar el cursor */
-    .glow-button:hover {
+    .box-link-button:hover {
       box-shadow: 0 0 15px rgba(100, 65, 165, 0.8);
     }   
 
