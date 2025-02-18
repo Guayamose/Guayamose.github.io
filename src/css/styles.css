@@ -1565,35 +1565,41 @@
   }
 }
 
-.center-container {
+/* Contenedor para centrar vertical y horizontalmente */
+    .center-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;  /* Ocupa toda la ventana del navegador */
-      margin: 0;
-      padding: 0;
+      height: 100%; /* 100% del body/html */
+      width: 100%;
+      background: #f0f0f0; /* Un fondo claro para ver el contraste */
     }
 
-    /* Estilos del enlace con apariencia de caja */
+    /* Botón estilo caja */
     .box-link {
       display: inline-block;
       padding: 15px 30px;
-      background-color: #003865; /* Color inicial */
-      color: #ffffff;           /* Texto en blanco */
-      text-decoration: none;    /* Quita el subrayado */
+      color: #fff;
+      text-decoration: none;
       font-family: Arial, sans-serif;
       font-size: 16px;
       font-weight: bold;
       border-radius: 6px;
-      /* Animación solo de color */
-      animation: colorAnimation 3s infinite alternate ease-in-out;
+      background-color: #003865;
+
+      /* Añadimos una animación "glow" (brillo) */
+      animation: glow 2s infinite alternate ease-in-out;
     }
 
-    @keyframes colorAnimation {
+    @keyframes glow {
       0% {
+        /* Sombra y color inicial */
+        box-shadow: 0 0 10px #003865;
         background-color: #003865;
       }
       100% {
+        /* Sombra y color final */
+        box-shadow: 0 0 30px #004f99;
         background-color: #004f99;
       }
     }
