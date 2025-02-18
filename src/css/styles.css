@@ -1524,7 +1524,7 @@
     .box-link {
       display: inline-block;
       padding: 10px 20px;
-      background-color: #4CAF50; /* Color de fondo */
+      background-color: #003865; /* Color de fondo */
       color: #ffffff;           /* Color del texto */
       text-decoration: none;    /* Quita el subrayado del enlace */
       border-radius: 4px;       /* Esquinas redondeadas */
@@ -1533,7 +1533,7 @@
     }
     
     .box-link:hover {
-      background-color: #45a049; /* Color de fondo al pasar el ratón */
+      background-color: #003864; /* Color de fondo al pasar el ratón */
     }
 
 /* ----- Ajustes para dispositivos móviles ----- */
