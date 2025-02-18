@@ -1522,6 +1522,7 @@
   transition: transform 0.3s ease;
 }
     .box-link {
+      position: center;
       display: inline-block;
       padding: 10px 20px;
       background-color: #003865; /* Color de fondo */
@@ -1533,7 +1534,7 @@
     }
     
     .box-link:hover {
-      background-color: #0062b2; /* Color de fondo al pasar el ratón */
+      background-color: #649eff; /* Color de fondo al pasar el ratón */
     }
 
 /* ----- Ajustes para dispositivos móviles ----- */
