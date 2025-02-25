@@ -1,0 +1,23 @@
+{
+    "routes": [
+      {
+        "route": "/index.html",
+        "redirect": "/",
+        "statusCode": 301
+      },
+      {
+        "route": "/",
+        "rewrite": "/index.html"
+      },
+      {
+        "route": "/inicio.html",
+        "redirect": "/inicio",
+        "statusCode": 301
+      },
+      {
+        "route": "/inicio",
+        "rewrite": "/inicio.html"
+      }
+    ]
+  }
+  
