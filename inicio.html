@@ -731,33 +731,33 @@
       });
     });
     document.addEventListener('DOMContentLoaded', () => {
-    const themeToggle = document.getElementById('theme-toggle');
-    const lightThemeLink = document.getElementById('light-theme');
-    const darkThemeLink = document.getElementById('dark-theme');
+  const themeToggle = document.getElementById('theme-toggle');
+  const lightThemeLink = document.getElementById('light-theme');
+  const darkThemeLink = document.getElementById('dark-theme');
 
-    // Verifica la preferencia en localStorage o asigna 'light' por defecto
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    if (currentTheme === 'dark') {
-      lightThemeLink.disabled = true;
-      darkThemeLink.disabled = false;
-    } else {
+  // Verifica la preferencia en localStorage o asigna 'dark' por defecto
+  const currentTheme = localStorage.getItem('theme') || 'dark';
+  if (currentTheme === 'dark') {
+    lightThemeLink.disabled = true;
+    darkThemeLink.disabled = false;
+  } else {
+    lightThemeLink.disabled = false;
+    darkThemeLink.disabled = true;
+  }
+
+  // Evento para alternar entre los temas
+  themeToggle.addEventListener('click', () => {
+    if (lightThemeLink.disabled) {
       lightThemeLink.disabled = false;
       darkThemeLink.disabled = true;
+      localStorage.setItem('theme', 'light');
+    } else {
+      lightThemeLink.disabled = true;
+      darkThemeLink.disabled = false;
+      localStorage.setItem('theme', 'dark');
     }
-
-    // Evento para alternar entre los temas
-    themeToggle.addEventListener('click', () => {
-      if (lightThemeLink.disabled) {
-        lightThemeLink.disabled = false;
-        darkThemeLink.disabled = true;
-        localStorage.setItem('theme', 'light');
-      } else {
-        lightThemeLink.disabled = true;
-        darkThemeLink.disabled = false;
-        localStorage.setItem('theme', 'dark');
-      }
-    });
   });
+});
 
 
   </script>
