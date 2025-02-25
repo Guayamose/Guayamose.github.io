@@ -735,6 +735,11 @@
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+    max-width: 600px;
   }
   .signup-container form {
     display: flex;
@@ -1688,3 +1693,141 @@
     height: 100%;
   }
       
+  .signup-link {
+    position: relative;             /* Para el efecto ripple */
+    display: inline-block;
+    padding: 18px 36px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #39C1D9;                 /* Color principal del texto */
+    background: #2C2C2C;            /* Fondo oscuro para resaltar el efecto */
+    border: 2px solid #39C1D9;      /* Borde teal */
+    border-radius: 40px;            /* Bordes redondeados */
+    overflow: hidden;               /* Para que el ripple no se salga */
+    cursor: pointer;
+    
+    /* Sombra y transiciones suaves */
+    box-shadow: 0 0 15px rgba(57, 193, 217, 0.3);
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease,
+                background 0.5s ease;
+  
+    /* Animaciones simultáneas: pulso y variación ligera de fondo */
+    animation: neonPulse 2.5s infinite alternate,
+               bgShift 5s infinite linear;
+  }
+  
+  /**************************************************************
+    ANIMACIÓN: Pulso suave (borde + texto)
+  **************************************************************/
+  @keyframes neonPulse {
+    0% {
+      box-shadow: 0 0 10px rgba(4, 29, 65, 0.948);
+      color: #7d7d7d;
+      border-color: #8a8a8a;
+    }
+    100% {
+      box-shadow: 0 0 20px rgba(54, 97, 156, 0.948);
+      color: #7f7f7f;       /* Un tono más claro para el pulso */
+      border-color: #848484;
+    }
+  }
+  
+  /**************************************************************
+    ANIMACIÓN: Cambio leve en el fondo para mayor dinamismo
+  **************************************************************/
+  @keyframes bgShift {
+    0% {
+      background: #646464;
+    }
+    50% {
+      background: #9a9999;
+    }
+    100% {
+      background: #808080;
+    }
+  }
+  
+  /**************************************************************
+    EFECTO HOVER: Zoom, más brillo
+  **************************************************************/
+  .signup-link:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(57, 193, 217, 0.8);
+  }
+  
+  /**************************************************************
+    EFECTO FOCUS (accesibilidad): Halo distintivo
+  **************************************************************/
+  .signup-link:focus {
+    outline: none;
+    box-shadow: 0 0 10px #39C1D9, 0 0 20px #39C1D9;
+  }
+  
+  /**************************************************************
+    EFECTO RIPPLE: Onda al hacer clic
+  **************************************************************/
+  .signup-link::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: rgba(57, 193, 217, 0.5);
+    border-radius: 50%;
+    transform: scale(1);
+    opacity: 0;
+    pointer-events: none;
+    left: 50%;
+    top: 50%;
+  }
+  
+  .signup-link:active::after {
+    animation: ripple 0.8s ease-out forwards;
+  }
+  
+  @keyframes ripple {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(25);
+      opacity: 0;
+    }
+  }
+  
+  /**************************************************************
+    EFECTO SHIMMER EN EL TEXTO: 
+    Un brillo que recorre las letras al hover
+  **************************************************************/
+  .signup-link span {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.558) 0%,
+      rgba(255, 255, 255, 0.6) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    color: transparent;
+    transition: color 0.4s ease;
+  }
+  
+  .signup-link:hover span {
+    animation: shimmer 2s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
