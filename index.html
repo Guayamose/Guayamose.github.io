@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UFV LOL CUP - Inicio</title>
+  <!-- Fuentes de Google -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <!-- =================== ESTILOS CSS =================== -->
+  <style>
+    /* ======================================================== */
+    /* RESET Y CONFIGURACIÓN BÁSICA */
+    /* ======================================================== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; font-family: 'Montserrat', sans-serif; }
+    body { overflow-x: hidden; position: relative; background-color: #0e0e0e; color: #f0f0f0; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ======================================================== */
+    /* MODO CLARO: se activa añadiendo la clase .light-mode a body */
+    /* ======================================================== */
+    body.light-mode { 
+      background-color: #ffffff; 
+      color: #333; 
+    }
+    body.light-mode header { background-color: #f7f7f7; }
+    body.light-mode header.scrolled { background-color: #e0e0e0; }
+    body.light-mode .logo { color: #00796b; }
+    body.light-mode nav ul li a { color: #333; }
+    body.light-mode .cta-button { background-color: #00796b; color: #fff; }
+    body.light-mode .cta-button:hover { background-color: #00695c; }
+
+    /* --- Modo Claro global (afecta a todo el archivo) --- */
+    body.light-mode #hero {
+      background: #f7f7f7 !important;
+      color: #333 !important;
+    }
+    body.light-mode section[id] {
+      background-color: #f7f7f7;
+      color: #333;
+    }
+    body.light-mode footer {
+      background-color: #f7f7f7;
+      color: #333;
+    }
+
+    /* ======================================================== */
+    /* PRELOADER */
+    /* ======================================================== */
+    #preloader {
+      position: fixed; 
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: #0e0e0e;
+      z-index: 3000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #preloader .loader {
+      border: 8px solid #333;
+      border-top: 8px solid #00ffcc;
+      border-radius: 50%;
+      width: 60px; height: 60px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* ======================================================== */
+    /* HEADER Y MENÚ */
+    /* ======================================================== */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 60px;
+      background-color: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      z-index: 2000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.7);
+      transition: background-color 0.3s;
+    }
+    header.scrolled {
+      background-color: #0a0a0a;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.9);
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #00ffcc;
+      cursor: pointer;
+      transition: transform 0.6s;
+    }
+    .logo:hover { transform: rotateY(360deg); }
+    .menu-icon {
+      display: none;
+      font-size: 2rem;
+      color: #00ffcc;
+      cursor: pointer;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+    nav ul li a {
+      color: #f0f0f0;
+      font-size: 1rem;
+      padding: 5px 10px;
+      transition: background 0.3s, color 0.3s, transform 0.3s;
+    }
+    nav ul li a:hover {
+      background: rgba(0,255,204,0.2);
+      border-radius: 5px;
+      transform: translateY(-2px);
+    }
+    /* Botón para alternar Dark/Light Mode */
+    .theme-toggle {
+      background: linear-gradient(45deg, #00ffcc, #00796b);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      color: #0e0e0e;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .theme-toggle:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+    }
+
+    /* ======================================================== */
+    /* MENÚ RESPONSIVE */
+    /* ======================================================== */
+    @media (max-width: 768px) {
+      .menu-icon { display: block; }
+      nav ul {
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        right: -300px;
+        width: 250px;
+        height: calc(100vh - 60px);
+        background-color: #1a1a1a;
+        transition: right 0.3s ease;
+        padding: 20px;
+      }
+      nav ul.show { right: 0; }
+    }
+    
+    /* ======================================================== */
+    /* HERO SECTION CON EFECTO DE PARTICULAS Y TIMER */
+    /* ======================================================== */
+    #hero {
+      position: relative;
+      margin-top: 60px;
+      height: calc(100vh - 60px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: radial-gradient(circle at 20% 40%, #0a0a0a 10%, #000 50%, #004d40 100%);
+      overflow: hidden;
+    }
+    /* Canvas de partículas ubicado DENTRO del hero */
+    #heroCanvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      padding: 20px;
+    }
+    .hero-content h1 {
+      font-size: 3.5rem;
+      color: #00ffcc;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+    }
+    .hero-content p {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      color: #f0f0f0;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+    }
+    .cta-button {
+      background-color: #00ffcc;
+      color: #0e0e0e;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      margin-top:10px;
+    }
+    .cta-button:hover {
+      background-color: #00ccaa;
+      transform: scale(1.05);
+    }
+    .countdown {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .countdown-item {
+      text-align: center;
+    }
+    .countdown-item span {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #00ffcc;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+      display: block;
+    }
+    .countdown-item small {
+      font-size: 0.9rem;
+      margin-top: 5px;
+      color: #f0f0f0;
+      display: block;
+    }
+    
+    /* ======================================================== */
+    /* SECCIONES INTERNALES */
+    /* ======================================================== */
+    section[id] {
+      padding: 80px 20px;
+      text-align: center;
+    }
+    section[id] h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #00ffcc;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+    }
+    section[id] p {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    /* ======================================================== */
+    /* FOOTER */
+    /* ======================================================== */
+    footer {
+      background-color: #1a1a1a;
+      padding: 40px 20px;
+      text-align: center;
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+/* Estilo general para pantallas grandes (una sola línea) */
+.titulo-animado {
+  position: relative;
+  font-size: 8vw;           /* Tamaño base para escritorio */
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  color: #235283;
+  -webkit-text-stroke: 0.3vw #383d52;
+  display: inline-flex;     /* Todo en una sola línea */
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+  margin: 0 auto;
+  max-width: calc(100% - 15px);
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 1;
+}
+
+/* Cada hijo en escritorio */
+.titulo-animado > * {
+  vertical-align: middle;
+  line-height: 1;
+}
+
+/* Efecto de revelado (si se usa) */
+.titulo-animado span[data-text]::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #0bd998;
+  overflow: hidden;
+  clip-path: inset(0 100% 0);
+  animation: revealAnimation 10s linear infinite;
+}
+
+@keyframes revealAnimation {
+  0%, 10%, 100% { clip-path: inset(0 100% 0); }
+  70%, 90%      { clip-path: inset(0 0 0); }
+}
+
+/* Ajuste de imagen (logo) */
+.titulo-animado img.logo {
+  width: 70px;
+  height: 70px;
+  display: inline-block;
+  vertical-align: middle;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.6));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.titulo-animado img.logo:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.7));
+}
+
+/* Efecto hover en las letras */
+.titulo-animado span {
+  position: relative;
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.titulo-animado span:hover {
+  transform: scale(1.1);
+  color: #00ffcc;
+}
+
+/* ---- Ajustes para pantallas grandes ---- */
+@media (min-width: 768px) {
+  .titulo-animado {
+    margin-left: -0.2em;
+    margin-right: auto;
+  }
+}
+@media (min-width: 1024px) {
+  .titulo-animado {
+    margin-left: 0;
+  }
+}
+
+/* ====== Ajustes móviles (max-width: 767px) ====== */
+@media (max-width: 767px) {
+  /* Ajuste del header si aplica */
+  header .logo {
+    font-size: 1.2rem;
+  }
+  
+  /* Convertimos el contenedor en block para insertar saltos de línea manuales */
+  .titulo-animado {
+    display: block;
+    text-align: center;
+    font-size: 4vw;  /* Ajusta el tamaño en móvil */
+    -webkit-text-stroke: 0.1vw #383d52;
+    white-space: normal;
+    line-height: 1.1;
+  }
+  
+  /* Primera línea: hijo(1) = UFV */
+  .titulo-animado > span:nth-child(1) {
+    display: block;
+    margin-bottom: 3px;
+    margin-right: 8px;
+  }
+  
+  /* Segunda línea: hijos(2, 3, 4) (L, logo, L) juntos */
+  .titulo-animado > span:nth-child(2),
+  .titulo-animado > img.logo,
+  .titulo-animado > span:nth-child(4) {
+    display: inline-flex;       /* Para mantenerlos en la misma línea */
+    vertical-align: middle;
+    margin:-11px;
+    margin-bottom:-20px;
+    line-height: 1;
+  }
+  
+  /* Tercera línea: hijo(5) = CUP */
+  .titulo-animado > span:nth-child(5) {
+    display: block;
+    margin-top: 0.4em;
+  }
+  
+  /* Reducimos un poco el logo en móviles */
+  .titulo-animado img.logo {
+    width: 65px;
+    height: 65px;
+  }
+}
+
+
+
+    /* Reglas originales para .logo (imagen) */
+    .logo {
+      width: 250px;
+      height: 250px;
+      margin-bottom: 15px;
+      filter: drop-shadow(0 3px 6px rgba(0,0,0,0.6));
+      transition: transform 0.5s ease, filter 0.5s ease;
+
+    }
+    
+    .logo {
+      width: 110px;
+      height: 110px;
+    }
+    .header-inicio {
+  /* Colores y tipografía */
+  background-color: #1a1a1a00;  /* Fusión con el fondo oscuro */
+  color: #00ffcc;            /* Turquesa brillante */
+  font-size: 1.5rem;         /* Tamaño de fuente ajustable */
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 0 0 6px rgba(0, 255, 204, 0.4);
+
+  /* Espaciado y posición */
+  display: block;
+  padding: 15px 20px;
+  margin: 0 auto;            /* Centra si es block-level */
+
+  /* Interacción */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  /* Efecto de sombra en el contenedor */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0);
+}
+
+/* Efecto hover */
+.header-inicio:hover {
+  background-color: #0a0a0a00;
+  transform: scale(1.02);
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 767px) {
+  .header-inicio {
+    font-size: 1.2rem;
+    padding: 12px 15px;
+  }
+}
+
+    
+    /* ======================================================== */
+    /* FIN DE ESTILOS */
+    /* ======================================================== */
+  </style>
+</head>
+<body>
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="loader"></div>
+  </div>
+  
+  <!-- HEADER Y MENÚ -->
+  <header>
+    <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+    <div class="header-inicio" onclick="location.href='inicio.html'">UFV LOL CUP</div>
+    <nav>
+      <ul id="navList">
+        <li><a href="inicio.html" class="nav-link external-link">Inicio</a></li>
+        <li><a href="inicio.html#bracket" class="nav-link">Bracket</a></li>
+        <li><a href="inicio.html#sponsors" class="nav-link">Patrocinadores</a></li>
+        <li><a href="inicio.html#rules" class="nav-link">Normas</a></li>
+        <li><a href="inicio.html#teams" class="nav-link">Equipos</a></li>
+        <li><a href="inicio.html#announcements" class="nav-link">Avisos</a></li>
+        <li><a href="inicio.html#signup" class="nav-link">Inscripción</a></li>
+        <li><a href="inicio.html#premios" class="nav-link">Premios</a></li>
+        <li><a href="inicio.html#contact" class="nav-link">Contacto</a></li>
+      </ul>
+    </nav>
+    <button class="theme-toggle" onclick="toggleTheme()">Modo Claro</button>
+  </header>
+  
+  <!-- HERO SECTION CON EFECTO DE PARTICULAS Y TIMER -->
+  <section id="hero">
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-content">
+      <h1 class="titulo-animado">
+        <span data-text="UFV">UFV</span>
+        <span data-text="L">L</span>
+        <img src="src/media/logo.png" alt="Logo del torneo" class="logo" />
+        <span data-text="L">L</span>
+        <span data-text="CUP">CUP</span>
+      </h1>      
+      <p>Únete al evento más esperado en League of Legends y vive la emoción.</p>
+      <button class="cta-button" onclick="location.href='inicio.html#bracket'">Ver Bracket</button>
+      <div class="countdown" id="countdownTimer">
+        <div class="countdown-item">
+          <span id="days">0</span>
+          <small>Días</small>
+        </div>
+        <div class="countdown-item">
+          <span id="hours">0</span>
+          <small>Horas</small>
+        </div>
+        <div class="countdown-item">
+          <span id="minutes">0</span>
+          <small>Minutos</small>
+        </div>
+        <div class="countdown-item">
+          <span id="seconds">0</span>
+          <small>Segundos</small>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 UFV LOL CUP. Todos los derechos reservados.</p>
+  </footer>
+  
+  <!-- =================== SCRIPTS DE FUNCIONALIDAD =================== -->
+  <script>
+    /*********************************************
+     * Preloader: Oculta el preloader después de cargar la página
+     *********************************************/
+    document.addEventListener("DOMContentLoaded", function() {
+      setTimeout(function() {
+        var preloader = document.getElementById('preloader');
+        preloader.style.opacity = '0';
+        preloader.style.visibility = 'hidden';
+      }, 1000);
+    });
+    
+    /*********************************************
+     * Menú Móvil: Alterna la visibilidad del menú en pantallas pequeñas
+     *********************************************/
+    function toggleMenu() {
+      var navList = document.getElementById('navList');
+      if (navList.classList.contains('show')) {
+        navList.classList.remove('show');
+      } else {
+        navList.classList.add('show');
+      }
+    }
+    
+    /*********************************************
+     * Dark/Light Mode Toggle: Alterna entre modo oscuro y claro
+     *********************************************/
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+      var themeButton = document.querySelector('.theme-toggle');
+      if(document.body.classList.contains('light-mode')) {
+        themeButton.innerText = "Modo Oscuro";
+      } else {
+        themeButton.innerText = "Modo Claro";
+      }
+    }
+    
+    /*********************************************
+     * Countdown Timer: Cuenta regresiva hasta el 27 de marzo de 2025
+     *********************************************/
+    (function countdownTimer() {
+      var countDownDate = new Date("Mar 27, 2025 23:59:59").getTime();
+      function updateTimer() {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+        if (distance < 0) {
+          document.getElementById("days").innerHTML = "0";
+          document.getElementById("hours").innerHTML = "0";
+          document.getElementById("minutes").innerHTML = "0";
+          document.getElementById("seconds").innerHTML = "0";
+          clearInterval(timerInterval);
+        } else {
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          document.getElementById("days").innerHTML = days;
+          document.getElementById("hours").innerHTML = hours;
+          document.getElementById("minutes").innerHTML = minutes;
+          document.getElementById("seconds").innerHTML = seconds;
+        }
+      }
+      updateTimer();
+      var timerInterval = setInterval(updateTimer, 1000);
+    })();
+    
+    /*********************************************
+     * Canvas de Partículas en el Hero Section
+     *********************************************/
+    var canvas = document.getElementById('heroCanvas');
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    var particleCount = 100;
+    var maxVelocity = 0.5;
+    var particleColor = "#00ffcc";
+    var particleSize = 3;
+    var animationFrameId;
+    
+    function resizeHeroCanvas() {
+      var heroSection = document.getElementById('hero');
+      canvas.width = heroSection.clientWidth;
+      canvas.height = heroSection.clientHeight;
+    }
+    window.addEventListener('resize', resizeHeroCanvas);
+    resizeHeroCanvas();
+    
+    class Particle {
+      constructor(x, y, vx, vy, radius, color) {
+        this.x = x;
+        this.y = y;
+        this.vx = vx;
+        this.vy = vy;
+        this.radius = radius;
+        this.color = color;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.checkBounds();
+      }
+      draw(ctx) {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+      checkBounds() {
+        if (this.x < 0 || this.x > canvas.width) { this.vx = -this.vx; }
+        if (this.y < 0 || this.y > canvas.height) { this.vy = -this.vy; }
+      }
+    }
+    
+    function initParticles() {
+      particles = [];
+      for (var i = 0; i < particleCount; i++) {
+        var x = Math.random() * canvas.width;
+        var y = Math.random() * canvas.height;
+        var vx = (Math.random() * maxVelocity * 2) - maxVelocity;
+        var vy = (Math.random() * maxVelocity * 2) - maxVelocity;
+        particles.push(new Particle(x, y, vx, vy, particleSize, particleColor));
+      }
+    }
+    
+    function drawParticleConnections() {
+      for (var i = 0; i < particles.length; i++) {
+        for (var j = i + 1; j < particles.length; j++) {
+          var dx = particles[i].x - particles[j].x;
+          var dy = particles[i].y - particles[j].y;
+          var distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < 100) {
+            ctx.beginPath();
+            ctx.strokeStyle = "rgba(0,255,204," + (1 - distance / 100) + ")";
+            ctx.lineWidth = 0.5;
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+    
+    function animateHeroCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(function(p) {
+        p.update();
+        p.draw(ctx);
+      });
+      drawParticleConnections();
+      animationFrameId = requestAnimationFrame(animateHeroCanvas);
+    }
+    
+    function startHeroParticleAnimation() {
+      initParticles();
+      animateHeroCanvas();
+    }
+    startHeroParticleAnimation();
+    
+    canvas.addEventListener('mousemove', function(e) {
+      var rect = canvas.getBoundingClientRect();
+      var mouseX = e.clientX - rect.left;
+      var mouseY = e.clientY - rect.top;
+      particles.forEach(function(p) {
+        var dx = p.x - mouseX;
+        var dy = p.y - mouseY;
+        var distance = Math.sqrt(dx * dx + dy * dy);
+        if(distance < 80) {
+          p.vx += (dx / distance) * 0.05;
+          p.vy += (dy / distance) * 0.05;
+        }
+      });
+    });
+    
+    document.addEventListener('visibilitychange', function() {
+      if(document.hidden) {
+        cancelAnimationFrame(animationFrameId);
+      } else {
+        startHeroParticleAnimation();
+      }
+    });
+    
+    /*********************************************
+     * FIN DE LOS SCRIPTS FUNCIONALES
+     *********************************************/
+  </script>
+  <!-- ======================================================== -->
+  <!-- FIN DEL DOCUMENTO -->
+  <!-- ======================================================== -->
+</body>
+</html>
