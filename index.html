@@ -493,7 +493,7 @@
         <li><a href="inicio.html#contact" class="nav-link">Contacto</a></li>
       </ul>
     </nav>
-    <button class="theme-toggle" onclick="toggleTheme()">Modo Claro</button>
+    <button class="theme-toggle" onclick="toggleTheme()">Light mode</button>
   </header>
   
   <!-- HERO SECTION CON EFECTO DE PARTICULAS Y TIMER -->
@@ -507,7 +507,7 @@
         <span data-text="L">L</span>
         <span data-text="CUP">CUP</span>
       </h1>      
-      <p>Únete al mayor evento a nivel universitario de League of Legends y vive la emoción.</p>
+      <p>Únete al mayor evento a nivel universitario de League of Legends de España y vive la emoción.</p>
       <button class="cta-button" onclick="location.href='inicio.html#bracket'">Ver Bracket</button>
       <div class="countdown" id="countdownTimer">
         <div class="countdown-item">
@@ -532,7 +532,7 @@
   
   <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 UFV LOL CUP. Todos los derechos reservados.</p>
+    <p>&copy; 2025 UFV LOL CUP. Desarrollado por Rafael Pradillo Lopez-Ortum.</p>
   </footer>
   
   <!-- =================== SCRIPTS DE FUNCIONALIDAD =================== -->
@@ -567,9 +567,9 @@
       document.body.classList.toggle('light-mode');
       var themeButton = document.querySelector('.theme-toggle');
       if(document.body.classList.contains('light-mode')) {
-        themeButton.innerText = "Modo Oscuro";
+        themeButton.innerText = "Dark mode";
       } else {
-        themeButton.innerText = "Modo Claro";
+        themeButton.innerText = "Light mode";
       }
     }
     
