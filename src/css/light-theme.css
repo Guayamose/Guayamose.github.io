@@ -329,6 +329,41 @@
     border-bottom: 2px solid var(--border-color);
     padding-bottom: 10px;
   }
+  .section-title2 {
+    display: block;
+    width: fit-content;    /* Se ajusta al contenido */
+    margin: 0 auto;        /* Centra el bloque horizontalmente */
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    
+    /* Gradiente con el mismo color al inicio y al final (#000) */
+    background: linear-gradient(
+      45deg,
+      #b4b4b4,       /* color inicial */
+      #757575,    /* color intermedio */
+      #797979,       /* otro color intermedio */
+      #6b6b6b        /* mismo color que al inicio para cerrar el ciclo */
+    );
+    
+    background-size: 200% 200%;     /* Más grande para permitir el movimiento */
+    background-repeat: no-repeat;
+    border-radius: 7px;
+    text-align: center;
+    
+    /* Animación en línea recta (solo avanza) */
+  animation: slide 5s linear infinite;
+}
+
+@keyframes gradientRibbon {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    /* Desplaza el fondo hasta 100% (o 200% si quieres más recorrido) */
+    background-position: 100% 50%;
+  }
+
+}
   
   /* ========================================================================== 
      BRACKET DESKTOP (ÁRBOL)
