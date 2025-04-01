@@ -413,68 +413,48 @@
   }
   .bracket-desktop .round-1 .match {
     position: absolute;
-    width: 100%;
+    width: 120%;
     min-height: 100px;
   }
   .bracket-desktop .round-1 .match:nth-child(1) {
-    top: 0;
+    top: 130px;
   }
   .bracket-desktop .round-1 .match:nth-child(2) {
-    top: 110px;
+    top: 300px;
   }
   .bracket-desktop .round-1 .match:nth-child(3) {
-    top: 220px;
+    top: 560px;
   }
   .bracket-desktop .round-1 .match:nth-child(4) {
-    top: 330px;
-  }
-  .bracket-desktop .round-1 .match:nth-child(5) {
-    top: 440px;
-  }
-  .bracket-desktop .round-1 .match:nth-child(6) {
-    top: 550px;
-  }
-  .bracket-desktop .round-1 .match:nth-child(7) {
-    top: 660px;
-  }
-  .bracket-desktop .round-1 .match:nth-child(8) {
-    top: 770px;
+    top: 710px;
   }
   .bracket-desktop .round-2 .match {
     position: absolute;
-    width: 100%;
+    width: 120%;
     min-height: 100px;
   }
   .bracket-desktop .round-2 .match:nth-child(1) {
-    top: 55px;
+    top: 255px;
   }
   .bracket-desktop .round-2 .match:nth-child(2) {
-    top: 275px;
-  }
-  .bracket-desktop .round-2 .match:nth-child(3) {
-    top: 495px;
-  }
-  .bracket-desktop .round-2 .match:nth-child(4) {
-    top: 715px;
+    top: 675px;
   }
   .bracket-desktop .round-3 .match {
     position: absolute;
-    width: 100%;
+    width: 120%;
     min-height: 100px;
   }
   .bracket-desktop .round-3 .match:nth-child(1) {
-    top: 165px;
+    top: 455px;
   }
-  .bracket-desktop .round-3 .match:nth-child(2) {
-    top: 605px;
-  }
+
   .bracket-desktop .round-4 .match {
     position: absolute;
     width: 100%;
     min-height: 100px;
   }
   .bracket-desktop .round-4 .match:nth-child(1) {
-    top: 385px;
+    top: 455px;
   }
   .bracket-desktop .match {
     background-color: #FFFFFF;
